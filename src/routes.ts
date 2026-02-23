@@ -20,7 +20,7 @@ export const routes = createBrowserRouter([
         loader: async ({ request }) => {
           const url = new URL(request.url);
           const outcome = url.searchParams.get("outcome") || undefined;
-          return await fetchScores({outcome});
+          return await fetchScores({ outcome, items: 10 });
         },
         ErrorBoundary: ErrorComponent,
       },

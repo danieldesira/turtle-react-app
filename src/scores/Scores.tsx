@@ -1,5 +1,6 @@
 import type { Score } from "./interfaces";
 import { useLoaderData, useNavigate } from "react-router";
+import ScoreTable from "./ScoreTable";
 
 function Scores() {
   const scores = useLoaderData() as Score[];
@@ -9,7 +10,7 @@ function Scores() {
     <div className="flex flex-col gap-3">
       <h2 className="text-2xl font-bold">All-time Scores</h2>
       <div className="flex gap-2">
-        <div className="flex flex-col gap-1">
+        <div className="flex gap-1 items-center">
           <label htmlFor="outcomes-select" className="text-sm font-semibold">
             Outcomes
           </label>
@@ -34,32 +35,7 @@ function Scores() {
           </select>
         </div>
       </div>
-      <table className="table-auto w-full border-collapse border border-primary rounded-sm">
-        <thead>
-          <tr>
-            <th className="px-4 py-2">Player Name</th>
-            <th className="px-4 py-2">Level</th>
-            <th className="px-4 py-2">Duration</th>
-            <th className="px-4 py-2">Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          {scores.map(({ playerName, level, duration, points }, index) => (
-            <tr key={index}>
-              <td className="border px-4 py-2 border-primary">{playerName}</td>
-              <td className="border px-4 py-2 border-primary text-right">
-                {level}
-              </td>
-              <td className="border px-4 py-2 border-primary text-right">
-                {duration}
-              </td>
-              <td className="border px-4 py-2 border-primary text-right">
-                {points}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <ScoreTable scores={scores} />
     </div>
   );
 }
