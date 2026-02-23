@@ -1,5 +1,5 @@
 import { axiosInstance } from "../axiosInstance";
-import type { Score, ScoresOptions } from "./interfaces";
+import type { ScoresResponse, ScoresOptions } from "./interfaces";
 
 export const fetchScores = async ({ outcome, items, page }: ScoresOptions) => {
   const res = await axiosInstance.get(
@@ -8,5 +8,5 @@ export const fetchScores = async ({ outcome, items, page }: ScoresOptions) => {
       (items ? `items=${items}&` : "") +
       (page ? `page=${page}&` : ""),
   );
-  return res.data as Score[];
+  return res.data as ScoresResponse;
 };

@@ -1,3 +1,9 @@
+export interface ScoresResponse {
+  scores: Array<Score>;
+  currentPage: number;
+  totalPages: number;
+}
+
 export interface Score {
   playerProfilePic?: string;
   playerName: string;

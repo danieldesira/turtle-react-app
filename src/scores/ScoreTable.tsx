@@ -20,7 +20,9 @@ function ScoreTable({ scores }: Props) {
         {scores.map(
           ({ playerName, level, duration, points, outcome }, index) => (
             <tr key={index}>
-              <td className="border px-4 py-2 border-primary">{playerName}</td>
+              <td className="border px-4 py-2 border-primary text-center">
+                {playerName}
+              </td>
               <td className="border px-4 py-2 border-primary text-right">
                 {level}
               </td>
@@ -30,7 +32,7 @@ function ScoreTable({ scores }: Props) {
               <td className="border px-4 py-2 border-primary text-right">
                 {points}
               </td>
-              <td className="border px-4 py-2 border-primary text-right">
+              <td className="border px-4 py-2 border-primary text-center">
                 {outcome}
               </td>
             </tr>

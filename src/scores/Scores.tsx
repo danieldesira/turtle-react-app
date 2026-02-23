@@ -1,15 +1,16 @@
-import type { Score } from "./interfaces";
+import type { ScoresResponse } from "./interfaces";
 import { useLoaderData, useNavigate } from "react-router";
 import ScoreTable from "./ScoreTable";
+import Paginator from "./Paginator";
 
 function Scores() {
-  const scores = useLoaderData() as Score[];
+  const { scores, currentPage, totalPages } = useLoaderData() as ScoresResponse;
   const navigate = useNavigate();
 
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-2xl font-bold">All-time Scores</h2>
-      <div className="flex gap-2">
+      <header className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold">All-time Scores</h2>
         <div className="flex gap-1 items-center">
           <label htmlFor="outcomes-select" className="text-sm font-semibold">
             Outcomes
@@ -34,8 +35,9 @@ function Scores() {
             </option>
           </select>
         </div>
-      </div>
+      </header>
       <ScoreTable scores={scores} />
+      <Paginator currentPage={currentPage} totalPages={totalPages} />
     </div>
   );
 }
