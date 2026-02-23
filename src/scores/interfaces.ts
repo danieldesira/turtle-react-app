@@ -5,3 +5,7 @@ export interface Score {
   duration: number;
   points: number;
 }
+
+export interface ScoresOptions {
+  outcome?: string;
+}

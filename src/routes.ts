@@ -17,7 +17,11 @@ export const routes = createBrowserRouter([
       {
         path: "/scores",
         Component: Scores,
-        loader: async () => await fetchScores(),
+        loader: async ({ request }) => {
+          const url = new URL(request.url);
+          const outcome = url.searchParams.get("outcome") || undefined;
+          return await fetchScores({outcome});
+        },
         ErrorBoundary: ErrorComponent,
       },
     ],
