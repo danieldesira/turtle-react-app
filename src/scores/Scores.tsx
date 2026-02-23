@@ -15,7 +15,7 @@ function Scores() {
           </label>
           <select
             id="outcomes-select"
-            className="p-2 border border-pink-500 rounded-sm"
+            className="p-2 border border-primary rounded-sm"
             onChange={(event) =>
               navigate(
                 `/scores?outcome=${event.target.value === "all" ? "" : event.target.value}`,
@@ -34,7 +34,7 @@ function Scores() {
           </select>
         </div>
       </div>
-      <table className="table-auto w-full border-collapse border border-pink-500">
+      <table className="table-auto w-full border-collapse border border-primary rounded-sm">
         <thead>
           <tr>
             <th className="px-4 py-2">Player Name</th>
@@ -43,17 +43,17 @@ function Scores() {
             <th className="px-4 py-2">Points</th>
           </tr>
         </thead>
-        <tbody className="border-collapse border border-pink-500">
+        <tbody>
           {scores.map(({ playerName, level, duration, points }, index) => (
             <tr key={index}>
-              <td className="border px-4 py-2 border-pink-500">{playerName}</td>
-              <td className="border px-4 py-2 border-pink-500 text-right">
+              <td className="border px-4 py-2 border-primary">{playerName}</td>
+              <td className="border px-4 py-2 border-primary text-right">
                 {level}
               </td>
-              <td className="border px-4 py-2 border-pink-500 text-right">
+              <td className="border px-4 py-2 border-primary text-right">
                 {duration}
               </td>
-              <td className="border px-4 py-2 border-pink-500 text-right">
+              <td className="border px-4 py-2 border-primary text-right">
                 {points}
               </td>
             </tr>
