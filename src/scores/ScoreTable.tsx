@@ -9,30 +9,37 @@ function ScoreTable({ scores }: Props) {
     <table className="table-auto w-full border-collapse border border-primary rounded-sm">
       <thead>
         <tr>
-          <th className="px-4 py-2">Player Name</th>
-          <th className="px-4 py-2">Level</th>
-          <th className="px-4 py-2">Duration</th>
-          <th className="px-4 py-2">Points</th>
-          <th className="px-4 py-2">Outcome</th>
+          <th className="px-2 py-1">Player Name</th>
+          <th className="px-2 py-1">Player Age</th>
+          <th className="px-2 py-1">Level</th>
+          <th className="px-2 py-1">Duration</th>
+          <th className="px-2 py-1">Points</th>
+          <th className="px-2 py-1">Outcome</th>
         </tr>
       </thead>
       <tbody>
         {scores.map(
-          ({ playerName, level, duration, points, outcome }, index) => (
+          (
+            { playerName, playerAge, level, duration, points, outcome },
+            index,
+          ) => (
             <tr key={index}>
-              <td className="border px-4 py-2 border-primary text-center">
+              <td className="border px-2 py-1 border-primary text-center">
                 {playerName}
               </td>
-              <td className="border px-4 py-2 border-primary text-right">
+              <td className="border px-2 py-1 border-primary text-right">
+                {playerAge}
+              </td>
+              <td className="border px-2 py-1 border-primary text-right">
                 {level}
               </td>
-              <td className="border px-4 py-2 border-primary text-right">
+              <td className="border px-2 py-1 border-primary text-right">
                 {duration}
               </td>
-              <td className="border px-4 py-2 border-primary text-right">
+              <td className="border px-2 py-1 border-primary text-right">
                 {points}
               </td>
-              <td className="border px-4 py-2 border-primary text-center">
+              <td className="border px-2 py-1 border-primary text-center">
                 {outcome}
               </td>
             </tr>
