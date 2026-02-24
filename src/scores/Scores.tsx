@@ -1,26 +1,42 @@
-import type { ScoresResponse } from "./interfaces";
+import type { ScoresOptions, ScoresResponse } from "./interfaces";
 import { useLoaderData, useNavigate } from "react-router";
 import ScoreTable from "./ScoreTable";
 import Paginator from "./Paginator";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dropdown from "../forms/Dropdown";
 
 function Scores() {
   const { scores, currentPage, totalPages } = useLoaderData() as ScoresResponse;
   const navigate = useNavigate();
-  const [outcomeFilter, setOutcomeFilter] = useState<string>("all");
+  const [filters, setFilters] = useState<ScoresOptions>({
+    juniors: false,
+    page: 1,
+    items: 10,
+  });
 
-  const handleOutcomeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setOutcomeFilter(event.target.value);
-    navigate(
-      `/scores?outcome=${event.target.value === "all" ? "" : event.target.value}`,
-    );
-  };
+  const handleOutcomeChange = (event: React.ChangeEvent<HTMLSelectElement>) =>
+    setFilters((prev) => ({
+      ...prev,
+      outcome:
+        event.target.value === ""
+          ? undefined
+          : (event.target.value as "WIN" | "LOSS"),
+      page: 1,
+    }));
 
   const handlePageChange = (page: number) =>
+    setFilters((prev) => ({ ...prev, page }));
+
+  const handleJuniorOnlyCheck = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setFilters((prev) => ({ ...prev, juniors: event.target.checked, page: 1 }));
+
+  useEffect(() => {
     navigate(
-      `/scores?page=${page}&outcome=${outcomeFilter === "all" ? "" : outcomeFilter}`,
+      `/scores?${Object.entries(filters)
+        .map(([key, value]) => `${key}=${value === true ? "1" : value}`)
+        .join("&")}`,
     );
+  }, [filters, navigate]);
 
   return (
     <div className="flex flex-col gap-3">
@@ -32,11 +48,22 @@ function Scores() {
             label="Outcomes"
             onChange={handleOutcomeChange}
             options={[
-              { label: "All", value: "all" },
+              { label: "All", value: "" },
               { label: "Wins", value: "win" },
               { label: "Losses", value: "loss" },
             ]}
           />
+          <div className="flex gap-1 items-center">
+            <label htmlFor="juniors-checkbox" className="text-sm font-semibold">
+              Juniors only (Under 16)
+            </label>
+            <input
+              type="checkbox"
+              id="juniors-checkbox"
+              className="checked:bg-primary w-4 h-4 rounded-sm"
+              onChange={handleJuniorOnlyCheck}
+            />
+          </div>
         </div>
       </header>
       <ScoreTable scores={scores} />

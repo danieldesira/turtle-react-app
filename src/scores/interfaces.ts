@@ -15,7 +15,8 @@ export interface Score {
 }
 
 export interface ScoresOptions {
-  outcome?: string;
+  outcome?: "WIN" | "LOSS";
+  juniors?: boolean;
   items?: number;
   page?: number;
 }

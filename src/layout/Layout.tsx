@@ -7,7 +7,7 @@ function Layout() {
         <img
           src="https://turtle-quest.vercel.app/assets/favicon-B1ZwkIgi.svg"
           alt="MSTN Logo"
-          className="w-16 h-16 animate-bounce-once"
+          className="w-8 h-8 animate-bounce-once"
         />
         <menu className="flex gap-2 items-center">
           <Link to="/" className="hover:bg-pink-400 p-2 rounded-sm">

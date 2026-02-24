@@ -19,10 +19,13 @@ export const routes = createBrowserRouter([
         Component: Scores,
         loader: async ({ request }) => {
           const url = new URL(request.url);
-          const outcome = url.searchParams.get("outcome") || undefined;
+          const outcome =
+            (url.searchParams.get("outcome") as "WIN" | "LOSS") ?? undefined;
           const page = url.searchParams.get("page") || "1";
+          const juniors = url.searchParams.get("juniors");
           return await fetchScores({
             outcome,
+            juniors: juniors === "1" ? true : false,
             items: 10,
             page: parseInt(page),
           });
