@@ -9,6 +9,7 @@ function ScoreTable({ scores }: Props) {
     <table className="table-auto w-full border-collapse border border-primary rounded-sm">
       <thead>
         <tr>
+          <th></th>
           <th className="px-2 py-1">Player Name</th>
           <th className="px-2 py-1">Player Age</th>
           <th className="px-2 py-1">Level</th>
@@ -20,10 +21,27 @@ function ScoreTable({ scores }: Props) {
       <tbody>
         {scores.map(
           (
-            { playerName, playerAge, level, duration, points, outcome },
+            {
+              playerProfilePicUrl,
+              playerName,
+              playerAge,
+              level,
+              duration,
+              points,
+              outcome,
+            },
             index,
           ) => (
             <tr key={index}>
+              <td className="border px-2 py-1 border-primary">
+                {playerProfilePicUrl && (
+                  <img
+                    className="w-8 h-8 rounded-sm m-auto"
+                    src={playerProfilePicUrl}
+                    alt="Player picture"
+                  />
+                )}
+              </td>
               <td className="border px-2 py-1 border-primary text-center">
                 {playerName}
               </td>

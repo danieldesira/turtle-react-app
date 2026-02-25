@@ -5,7 +5,7 @@ export interface ScoresResponse {
 }
 
 export interface Score {
-  playerProfilePic?: string;
+  playerProfilePicUrl?: string;
   playerName: string;
   playerAge?: number;
   level: number;
