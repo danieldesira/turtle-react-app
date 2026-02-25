@@ -1,3 +1,5 @@
+import FilterField from "./FilterField";
+
 type Props = {
   id: string;
   label: string;
@@ -10,7 +12,7 @@ type Props = {
 
 function Dropdown({ id, label, options, onChange }: Props) {
   return (
-    <div className="flex gap-1 items-center">
+    <FilterField>
       <label htmlFor={id} className="text-sm font-semibold">
         {label}
       </label>
@@ -26,7 +28,7 @@ function Dropdown({ id, label, options, onChange }: Props) {
           </option>
         ))}
       </select>
-    </div>
+    </FilterField>
   );
 }
 

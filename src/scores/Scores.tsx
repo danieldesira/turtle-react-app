@@ -4,6 +4,7 @@ import ScoreTable from "./ScoreTable";
 import Paginator from "./Paginator";
 import { useEffect, useState } from "react";
 import Dropdown from "../forms/Dropdown";
+import FilterField from "../forms/FilterField";
 
 function Scores() {
   const { scores, currentPage, totalPages } = useLoaderData() as ScoresResponse;
@@ -33,6 +34,7 @@ function Scores() {
   useEffect(() => {
     navigate(
       `/scores?${Object.entries(filters)
+        .filter(([, value]) => value)
         .map(([key, value]) => `${key}=${value === true ? "1" : value}`)
         .join("&")}`,
     );
@@ -53,20 +55,26 @@ function Scores() {
               { label: "Losses", value: "loss" },
             ]}
           />
-          <div className="flex gap-1 items-center">
+          <FilterField>
             <label htmlFor="juniors-checkbox" className="text-sm font-semibold">
               Juniors only (Under 16)
             </label>
             <input
               type="checkbox"
               id="juniors-checkbox"
-              className="checked:bg-primary w-4 h-4 rounded-sm"
+              className="appearance-none checked:bg-primary w-4 h-4 rounded-sm focus:ring-1 focus:ring-primary border border-primary"
               onChange={handleJuniorOnlyCheck}
             />
-          </div>
+          </FilterField>
         </div>
       </header>
-      <ScoreTable scores={scores} />
+      {scores.length ? (
+        <ScoreTable scores={scores} />
+      ) : (
+        <span className="text-lg font-bold">
+          No scores found yet... Please broaden your filters!
+        </span>
+      )}
       <Paginator
         currentPage={currentPage}
         totalPages={totalPages}
