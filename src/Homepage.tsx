@@ -20,7 +20,7 @@ function Homepage() {
         <a
           href="https://turtle-quest.vercel.app/"
           target="_blank"
-          className="px-4 py-2 bg-primary text-white font-bold w-fit rounded-sm"
+          className="px-4 py-2 bg-primary hover:bg-pink-400 transition-colors duration-300 text-white font-bold w-fit rounded-sm"
         >
           Launch Game
         </a>
