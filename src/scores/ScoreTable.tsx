@@ -6,7 +6,7 @@ type Props = {
 
 function ScoreTable({ scores }: Props) {
   return (
-    <table className="table-auto w-full border-collapse border border-primary rounded-sm">
+    <table className="table-auto w-full border-collapse">
       <thead>
         <tr>
           <th></th>
@@ -32,8 +32,11 @@ function ScoreTable({ scores }: Props) {
             },
             index,
           ) => (
-            <tr key={index}>
-              <td className="border px-2 py-1 border-primary">
+            <tr
+              key={index}
+              className={index % 2 ? "bg-gray-600 text-white" : ""}
+            >
+              <td className="p-2">
                 {playerProfilePicUrl && (
                   <img
                     className="w-8 h-8 rounded-sm m-auto"
@@ -42,24 +45,12 @@ function ScoreTable({ scores }: Props) {
                   />
                 )}
               </td>
-              <td className="border px-2 py-1 border-primary text-center">
-                {playerName}
-              </td>
-              <td className="border px-2 py-1 border-primary text-right">
-                {playerAge}
-              </td>
-              <td className="border px-2 py-1 border-primary text-right">
-                {level}
-              </td>
-              <td className="border px-2 py-1 border-primary text-right">
-                {duration}
-              </td>
-              <td className="border px-2 py-1 border-primary text-right">
-                {points}
-              </td>
-              <td className="border px-2 py-1 border-primary text-center">
-                {outcome}
-              </td>
+              <td className="p-2 text-center">{playerName}</td>
+              <td className="p-2 text-right">{playerAge}</td>
+              <td className="p-2 text-right">{level}</td>
+              <td className="p-2 text-right">{duration}</td>
+              <td className="p-2 text-right">{points}</td>
+              <td className="p-2 text-center">{outcome}</td>
             </tr>
           ),
         )}

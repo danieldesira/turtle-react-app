@@ -69,7 +69,9 @@ function Scores() {
         </div>
       </header>
       {scores.length ? (
-        <ScoreTable scores={scores} />
+        <div className="border border-primary rounded-sm overflow-auto">
+          <ScoreTable scores={scores} />
+        </div>
       ) : (
         <span className="text-lg font-bold">
           No scores found yet... Please broaden your filters!
