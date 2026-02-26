@@ -40,7 +40,7 @@ function Layout() {
       </main>
       <footer className="fixed bottom-0 w-full bg-primary text-white p-4 flex gap-4 justify-center items-center opacity-85">
         {socialIcons.map(({ Icon, url }) => (
-          <a href={url} target="_blank">
+          <a key={url} href={url} target="_blank">
             <Icon className="w-8 h-8" />
           </a>
         ))}
