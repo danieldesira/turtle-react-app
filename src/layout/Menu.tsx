@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import "./Menu.css";
+import { useRef } from "react";
 
 type MenuItem = { url: string; label: string };
 
@@ -9,8 +10,15 @@ function Menu() {
     { url: "/scores", label: "Scores" },
   ] satisfies MenuItem[];
 
+  const burgerMenuRef = useRef<HTMLDialogElement>(null);
+
   const menuItemsJsx = menuItems.map(({ url, label }) => (
-    <Link key={url} to={url} className="hover:bg-pink-400 p-2 rounded-sm text-white text-lg font-bold">
+    <Link
+      key={url}
+      to={url}
+      className="hover:bg-pink-400 p-2 rounded-sm text-white text-lg font-bold"
+      onClick={() => burgerMenuRef.current?.hidePopover()}
+    >
       {label}
     </Link>
   ));
@@ -25,6 +33,7 @@ function Menu() {
       </menu>
       <dialog
         id="burgerMenu"
+        ref={burgerMenuRef}
         popover=""
         className="fixed top-20 bg-primary flex-col gap-10 justify-center items-center min-h-2/3 w-full rounded-sm opacity-85"
       >

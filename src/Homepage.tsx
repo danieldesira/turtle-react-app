@@ -20,7 +20,7 @@ function Homepage() {
         <a
           href="https://turtle-quest.vercel.app/"
           target="_blank"
-          className="px-3 py-1 bg-primary w-fit rounded-sm"
+          className="px-4 py-2 bg-primary text-white font-bold w-fit rounded-sm"
         >
           Launch Game
         </a>
@@ -51,9 +51,10 @@ function Homepage() {
             className="underline"
           >
             here.
-          </a>&nbsp;
-          Special thanks goes to Marvic Refalo (educator at NTM and volunteer
-          wildlife rescuer) for her constructive feedback from testing the game.
+          </a>
+          &nbsp; Special thanks goes to Marvic Refalo (educator at NTM and
+          volunteer wildlife rescuer) for her constructive feedback from testing
+          the game.
         </p>
         <p className="font-normal text-sm">
           Hope for many more baby turtles in the years to come!

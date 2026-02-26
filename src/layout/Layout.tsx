@@ -15,7 +15,7 @@ function Layout() {
       <main className="flex-1 p-4 my-20">
         <Outlet />
       </main>
-      <footer className="fixed bottom-0 bg-primary text-white p-4 text-center opacity-85">
+      <footer className="fixed bottom-0 w-full bg-primary text-white p-4 text-center opacity-85">
         Built by Daniel Desira with React, React Router and Tailwindcss.
       </footer>
     </div>
