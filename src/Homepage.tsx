@@ -44,9 +44,16 @@ function Homepage() {
         <p className="font-normal text-sm">
           Many thanks to those of you have shared their honest feedback, as well
           as those who simply enjoyed playing. The list of contributors may be
-          accessed [here.](contributors.md) Special thanks goes to Marvic Refalo
-          (educator at NTM and volunteer wildlife rescuer) for her constructive
-          feedback from testing the game.
+          accessed&nbsp;
+          <a
+            href="https://github.com/danieldesira/MissionSeaTurtleNest/blob/master/contributors.md"
+            target="__blank"
+            className="underline"
+          >
+            here.
+          </a>&nbsp;
+          Special thanks goes to Marvic Refalo (educator at NTM and volunteer
+          wildlife rescuer) for her constructive feedback from testing the game.
         </p>
         <p className="font-normal text-sm">
           Hope for many more baby turtles in the years to come!

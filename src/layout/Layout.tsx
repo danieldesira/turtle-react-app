@@ -12,10 +12,10 @@ function Layout() {
         />
         <Menu />
       </header>
-      <main className="flex-1 p-4 mt-20">
+      <main className="flex-1 p-4 my-20">
         <Outlet />
       </main>
-      <footer className="bg-primary text-white p-4 text-center">
+      <footer className="fixed bottom-0 bg-primary text-white p-4 text-center opacity-85">
         Built by Daniel Desira with React, React Router and Tailwindcss.
       </footer>
     </div>
