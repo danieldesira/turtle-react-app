@@ -40,7 +40,7 @@ function Menu() {
         id="burgerMenu"
         ref={burgerMenuRef}
         popover=""
-        className="fixed top-16 bg-primary flex-col gap-10 justify-center items-center min-h-full w-full rounded-sm opacity-85"
+        className="fixed top-16 bg-primary flex-col gap-10 justify-center items-center w-full rounded-sm opacity-85"
       >
         {menuItemsJsx}
       </dialog>
