@@ -8,7 +8,7 @@ function ScoreTable({ scores }: Props) {
   return (
     <table className="table-auto w-full border-collapse">
       <thead>
-        <tr>
+        <tr className="bg-primary">
           <th></th>
           <th className="px-2 py-1">Player Name</th>
           <th className="px-2 py-1">Player Age</th>
