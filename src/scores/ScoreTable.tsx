@@ -16,6 +16,7 @@ function ScoreTable({ scores }: Props) {
           <th className="px-2 py-1">Duration</th>
           <th className="px-2 py-1">Points</th>
           <th className="px-2 py-1">Outcome</th>
+          <th className="px-2 py-1">Resets Used</th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +30,7 @@ function ScoreTable({ scores }: Props) {
               duration,
               points,
               outcome,
+              resetsUsed,
             },
             index,
           ) => (
@@ -51,6 +53,7 @@ function ScoreTable({ scores }: Props) {
               <td className="p-2 text-right">{duration}</td>
               <td className="p-2 text-right">{points}</td>
               <td className="p-2 text-center">{outcome}</td>
+              <td className="p-2 text-right">{resetsUsed}</td>
             </tr>
           ),
         )}

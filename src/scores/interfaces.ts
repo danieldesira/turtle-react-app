@@ -12,6 +12,7 @@ export interface Score {
   duration: number;
   points: number;
   outcome: string;
+  resetsUsed: number;
 }
 
 export interface ScoresOptions {
