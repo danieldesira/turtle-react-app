@@ -7,15 +7,28 @@ type Props = {
   authorName: string;
   excerpt: string;
   modifiedDate: string;
+  featuredImage?: string;
 };
 
-function PostListing({ id, title, authorName, excerpt, modifiedDate }: Props) {
+function PostListing({
+  id,
+  title,
+  authorName,
+  excerpt,
+  modifiedDate,
+  featuredImage,
+}: Props) {
   return (
     <Link to={`/blog/${id}`}>
       <div className="flex flex-col gap-1 bg-primary text-white rounded-sm p-2 max-w-96">
-        <div className="flex gap-2">
-          <span className="font-bold text-xl">{title}</span>
-          <span className="font-light text-lg">{authorName}</span>
+        <div className="flex flex-col gap-2">
+          {featuredImage && (
+            <img src={featuredImage} alt={`${title} featured image`} />
+          )}
+          <div className="flex justify-between">
+            <span className="font-bold text-xl">{title}</span>
+            <span className="font-light text-lg">{authorName}</span>
+          </div>
         </div>
         <div className="font-medium text-sm">
           <SafeRawHtmlWrapper html={excerpt} />

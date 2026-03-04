@@ -12,16 +12,19 @@ function Blog() {
       </header>
       {found ? (
         <div className="border border-primary rounded-sm overflow-auto p-2 flex flex-wrap gap-2">
-          {posts?.map(({ ID, author, modified, title, excerpt }) => (
-            <PostListing
-              key={ID}
-              id={ID!}
-              title={title!}
-              authorName={author?.nice_name ?? ""}
-              excerpt={excerpt!}
-              modifiedDate={modified!}
-            />
-          ))}
+          {posts?.map(
+            ({ ID, author, modified, title, excerpt, featured_image }) => (
+              <PostListing
+                key={ID}
+                id={ID!}
+                title={title!}
+                authorName={author?.nice_name ?? ""}
+                excerpt={excerpt!}
+                modifiedDate={modified!}
+                featuredImage={featured_image}
+              />
+            ),
+          )}
         </div>
       ) : (
         <span className="text-lg font-bold">No blog posts yet...</span>

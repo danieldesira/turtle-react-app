@@ -27,4 +27,5 @@ export interface Post {
   guid?: string;
   status?: string;
   type?: string;
+  featured_image?: string;
 }

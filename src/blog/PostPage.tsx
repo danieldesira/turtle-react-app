@@ -3,11 +3,16 @@ import type { Post } from "./interfaces";
 import SafeRawHtmlWrapper from "./SafeRawHtml";
 
 function PostPage() {
-  const { title, content, author, modified } = useLoaderData() as Post;
+  const { title, content, author, modified, featured_image } =
+    useLoaderData() as Post;
+  console.log(featured_image);
 
   return (
     <div className="flex flex-col gap-3">
-      <header className="flex justify-between items-center flex-wrap">
+      <header
+        className="flex justify-center items-center flex-wrap min-h-80 bg-cover bg-center"
+        style={{ backgroundImage: `url(${featured_image})` }}
+      >
         <h2 className="text-2xl font-bold">{title}</h2>
       </header>
       <div className="border border-primary rounded-sm overflow-auto p-2 flex flex-col gap-2">
