@@ -9,6 +9,7 @@ function Menu() {
   const menuItems = [
     { url: "/", label: "Home" },
     { url: "/scores", label: "Scores" },
+    { url: "/blog", label: "Blog" },
   ] satisfies MenuItem[];
 
   const burgerMenuRef = useRef<HTMLDialogElement>(null);

@@ -4,6 +4,8 @@ import Homepage from "./Homepage";
 import Scores from "./scores/Scores";
 import { fetchScores } from "./scores/service";
 import ErrorComponent from "./ErrorComponent";
+import Blog from "./blog/Blog";
+import { getPosts } from "./blog/services";
 
 export const routes = createBrowserRouter([
   {
@@ -30,6 +32,12 @@ export const routes = createBrowserRouter([
             page: parseInt(page),
           });
         },
+        ErrorBoundary: ErrorComponent,
+      },
+      {
+        path: "/blog",
+        Component: Blog,
+        loader: async () => await getPosts(),
         ErrorBoundary: ErrorComponent,
       },
     ],
