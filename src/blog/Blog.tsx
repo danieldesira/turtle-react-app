@@ -15,6 +15,7 @@ function Blog() {
           {posts?.map(({ ID, author, modified, title, excerpt }) => (
             <PostListing
               key={ID}
+              id={ID!}
               title={title!}
               authorName={author?.nice_name ?? ""}
               excerpt={excerpt!}

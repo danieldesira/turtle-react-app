@@ -5,7 +5,8 @@ import Scores from "./scores/Scores";
 import { fetchScores } from "./scores/service";
 import ErrorComponent from "./ErrorComponent";
 import Blog from "./blog/Blog";
-import { getPosts } from "./blog/services";
+import { getPosts, getSinglePost } from "./blog/services";
+import PostPage from "./blog/PostPage";
 
 export const routes = createBrowserRouter([
   {
@@ -38,6 +39,12 @@ export const routes = createBrowserRouter([
         path: "/blog",
         Component: Blog,
         loader: async () => await getPosts(),
+        ErrorBoundary: ErrorComponent,
+      },
+      {
+        path: "/blog/:id",
+        Component: PostPage,
+        loader: async ({ params }) => await getSinglePost(parseInt(params.id!)),
         ErrorBoundary: ErrorComponent,
       },
     ],
