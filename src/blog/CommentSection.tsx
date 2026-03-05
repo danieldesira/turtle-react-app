@@ -2,6 +2,7 @@ import type { GetPostRepliesResponse } from "./interfaces";
 import Comment from "./Comment";
 import TextInput from "../forms/TextInput";
 import SubmitButton from "../forms/SubmitButton";
+import { Form } from "react-router";
 
 type Props = { replies: GetPostRepliesResponse };
 
@@ -24,7 +25,7 @@ function CommentSection({ replies }: Props) {
       ) : (
         <span>No comments yet... Be the first!</span>
       )}
-      <form method="post" className="flex flex-col gap-2 items-center">
+      <Form method="post" className="flex flex-col gap-2 items-center">
         <h4 className="text-lg font-bold">Add a comment...</h4>
         <TextInput id="authorName" placeholder="Your name" required />
         <TextInput type="email" id="authorEmail" placeholder="Your email" />
@@ -35,7 +36,7 @@ function CommentSection({ replies }: Props) {
           aria-required
         ></textarea>
         <SubmitButton>Post</SubmitButton>
-      </form>
+      </Form>
     </section>
   );
 }

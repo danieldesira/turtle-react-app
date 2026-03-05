@@ -5,7 +5,12 @@ import Scores from "./scores/Scores";
 import { fetchScores } from "./scores/service";
 import ErrorComponent from "./ErrorComponent";
 import Blog from "./blog/Blog";
-import { getPostReplies, getPosts, getSinglePost } from "./blog/services";
+import {
+  getPostReplies,
+  getPosts,
+  getSinglePost,
+  postNewReply,
+} from "./blog/services";
 import PostPage from "./blog/PostPage";
 
 export const routes = createBrowserRouter([
@@ -56,6 +61,15 @@ export const routes = createBrowserRouter([
           };
         },
         ErrorBoundary: ErrorComponent,
+        action: async ({ request, params }) => {
+          const postId = parseInt(params.id!);
+          const formData = await request.formData();
+          await postNewReply(postId, {
+            author_name: formData.get("authorName")?.toString(),
+            author_email: formData.get("authorEmail")?.toString(),
+            content: formData.get("content")?.toString(),
+          });
+        },
       },
     ],
   },
