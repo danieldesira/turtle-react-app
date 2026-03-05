@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import SafeRawHtmlWrapper from "./SafeRawHtml";
+import { formatDate } from "./utils";
 
 type Props = {
   id: number;
@@ -33,9 +34,7 @@ function PostListing({
         <div className="font-medium text-sm">
           <SafeRawHtmlWrapper html={excerpt} />
         </div>
-        <span className="font-light text-sm">
-          {modifiedDate.replace("T", " ")}
-        </span>
+        <span className="font-light text-sm">{formatDate(modifiedDate)}</span>
       </div>
     </Link>
   );
