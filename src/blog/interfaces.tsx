@@ -3,19 +3,21 @@ export interface GetPostsResponse {
   posts?: Post[];
 }
 
+interface Author {
+  login?: string;
+  email?: string | boolean;
+  name?: string;
+  first_name?: string;
+  last_name?: string;
+  nice_name?: string;
+  URL?: string;
+  avatar_URL?: string;
+  profile_URL?: string;
+}
+
 export interface Post {
   ID?: number;
-  author?: {
-    login?: string;
-    email?: string | boolean;
-    name?: string;
-    first_name?: string;
-    last_name?: string;
-    nice_name?: string;
-    URL?: string;
-    avatar_URL?: string;
-    profile_URL?: string;
-  };
+  author?: Author;
   date?: string;
   modified?: string;
   title?: string;
@@ -28,4 +30,16 @@ export interface Post {
   status?: string;
   type?: string;
   featured_image?: string;
+}
+
+export interface GetPostRepliesResponse {
+  found?: number;
+  comments?: Comment[];
+}
+
+interface Comment {
+  ID?: number;
+  date?: string;
+  content?: string;
+  author?: Author;
 }

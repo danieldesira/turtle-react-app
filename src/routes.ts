@@ -5,7 +5,7 @@ import Scores from "./scores/Scores";
 import { fetchScores } from "./scores/service";
 import ErrorComponent from "./ErrorComponent";
 import Blog from "./blog/Blog";
-import { getPosts, getSinglePost } from "./blog/services";
+import { getPostReplies, getPosts, getSinglePost } from "./blog/services";
 import PostPage from "./blog/PostPage";
 
 export const routes = createBrowserRouter([
@@ -44,7 +44,17 @@ export const routes = createBrowserRouter([
       {
         path: "/blog/:id",
         Component: PostPage,
-        loader: async ({ params }) => await getSinglePost(parseInt(params.id!)),
+        loader: async ({ params }) => {
+          const postId = parseInt(params.id!);
+          const [post, replies] = await Promise.all([
+            getSinglePost(postId),
+            getPostReplies(postId),
+          ]);
+          return {
+            post,
+            replies,
+          };
+        },
         ErrorBoundary: ErrorComponent,
       },
     ],
