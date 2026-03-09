@@ -7,6 +7,9 @@ export const axiosTurtleApiInstance = axios.create({
 export const axiosWordpressApiInstance = axios.create({
   baseURL:
     "https://public-api.wordpress.com/rest/v1.1/sites/missionseaturtlenest.wordpress.com",
+  headers: {
+    Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+  },
 });
 
 export const axiosWordpressOauthBEInstance = axios.create({

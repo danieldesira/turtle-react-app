@@ -52,6 +52,7 @@ export const routes = createBrowserRouter([
         path: "/blog/:id",
         Component: PostPage,
         loader: async ({ params }) => {
+          sessionStorage.setItem("postId", params.id!);
           const postId = parseInt(params.id!);
           const [post, replies] = await Promise.all([
             getSinglePost(postId),
@@ -78,7 +79,7 @@ export const routes = createBrowserRouter([
         loader: async ({ request }) => {
           const url = new URL(request.url);
           const oauthCode = url.searchParams.get("code");
-          const postId = url.searchParams.get("post_id");
+          const postId = sessionStorage.getItem("postId");
           if (oauthCode) {
             try {
               const { access_token } = (await authenticateWP(
