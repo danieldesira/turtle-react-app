@@ -14,6 +14,8 @@ import {
 } from "./blog/services";
 import PostPage from "./blog/PostPage";
 import type { WPComToken } from "./blog/interfaces";
+import { storeOauthToken } from "./features/blog/wpcomTokenSlice";
+import { store } from "./store";
 
 export const routes = createBrowserRouter([
   {
@@ -85,7 +87,7 @@ export const routes = createBrowserRouter([
               const { access_token } = (await authenticateWP(
                 oauthCode!,
               )) as WPComToken;
-              sessionStorage.setItem("token", access_token!);
+              store.dispatch(storeOauthToken(access_token));
             } catch (error) {
               console.error(error);
             }

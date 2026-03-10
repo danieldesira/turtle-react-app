@@ -3,10 +3,16 @@ import Comment from "./Comment";
 import SubmitButton from "../forms/SubmitButton";
 import { Form } from "react-router";
 import WPLoginButton from "./WPLoginButton";
+import { useSelector } from "react-redux";
+import type { RootState } from "../store";
 
 type Props = { replies: GetPostRepliesResponse };
 
 function CommentSection({ replies }: Props) {
+  const wpOauthToken = useSelector(
+    (state: RootState) => state.wpcomToken.value,
+  );
+
   return (
     <section className="flex flex-col p-2 gap-2">
       <h3 className="text-xl font-bold">Comments</h3>
@@ -26,7 +32,7 @@ function CommentSection({ replies }: Props) {
         <span>No comments yet... Be the first!</span>
       )}
       <h4 className="text-lg font-bold">Add a comment...</h4>
-      {sessionStorage.getItem("token") ? (
+      {wpOauthToken ? (
         <Form method="post" className="flex flex-col gap-2 items-center">
           <textarea
             name="content"
