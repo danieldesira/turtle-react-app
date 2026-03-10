@@ -12,7 +12,6 @@ import {
   getPosts,
   getSinglePost,
   postNewReply,
-  updateReply,
 } from "./blog/services";
 import PostPage from "./blog/PostPage";
 import type { WPComToken } from "./blog/interfaces";
@@ -61,7 +60,9 @@ export const routes = createBrowserRouter([
           const [post, replies, wpUser] = await Promise.all([
             getSinglePost(postId),
             getPostReplies(postId),
-            store.getState().wpcomToken.value ? getCurrentWpcomUser() : undefined,
+            store.getState().wpcomToken.value
+              ? getCurrentWpcomUser()
+              : undefined,
           ]);
           return {
             post,
@@ -73,17 +74,10 @@ export const routes = createBrowserRouter([
         action: async ({ request, params }) => {
           const postId = parseInt(params.id!);
           const formData = await request.formData();
-          const commentId = formData.get("commentId");
           const content = formData.get("content")?.toString();
-          if (commentId) {
-            await updateReply(parseInt(commentId.toString()), {
-              content,
-            });
-          } else {
-            await postNewReply(postId, {
-              content,
-            });
-          }
+          await postNewReply(postId, {
+            content,
+          });
         },
       },
       {

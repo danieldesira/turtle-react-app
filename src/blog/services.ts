@@ -45,21 +45,3 @@ export const postNewReply = async (
   );
   return res.data;
 };
-
-export const updateReply = async (
-  commentId: number,
-  payload: PostCommentPayload,
-) => {
-  const res = await axiosWordpressApiInstance.post(
-    `/comments/${commentId}`,
-    payload,
-  );
-  return res.data;
-};
-
-export const deleteComment = async (commentId: number) => {
-  const res = await axiosWordpressApiInstance.delete(
-    `/comments/${commentId}?force=true`,
-  );
-  return res.data;
-};
