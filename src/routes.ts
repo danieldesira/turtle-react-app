@@ -99,6 +99,7 @@ export const routes = createBrowserRouter([
           return redirect(`/blog/${postId}`);
         },
         element: null,
+        ErrorBoundary: ErrorComponent,
       },
     ],
   },
